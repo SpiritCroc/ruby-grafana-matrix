@@ -2,6 +2,9 @@
 <%- unless data.fetch('message', '').empty? -%>
 <%= data['message'] %>
 <%- end -%>
+<%- unless data.fetch('executionError', '').empty? -%>
+<%= data['executionError'] %>
+<%- end -%>
 <%- if data.key? 'error' -%>
 Error: <%= data['error'] %>
 <%- end -%>

@@ -9,6 +9,9 @@
 <p><%= data['message'] %></p>
 <%-   end -%>
 <%- end -%>
+<%- unless data.fetch('executionError', '').empty? -%>
+<p><%= data['executionError'] %></p>
+<%- end -%>
 <%- if data.key? 'error' -%>
 <h5>Error:</h5>
 <p><%= data['error'] %></p>
