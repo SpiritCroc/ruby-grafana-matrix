@@ -73,11 +73,17 @@ module GrafanaMatrix
         logger.debug 'HTML:'
         logger.debug html
 
+        if data['state'] != 'ok'
+          msgtype = 'm.text'
+        else
+          msgtype = 'm.notice'
+        end
+
         # Support rules with nil client explicitly specified, for testing
         next unless client.is_a? MatrixSdk::Api
 
         client.send_message_event(room, 'm.room.message',
-                                  { msgtype: rule.msgtype,
+                                  { msgtype: msgtype,
                                     body: plain,
                                     formatted_body: html,
                                     format: 'org.matrix.custom.html' })
